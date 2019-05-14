@@ -1,0 +1,24 @@
+# >>> ERRO PASTA MODEL:
+# RODAR NA LINHA DE COMANDO: option ampl_include models;
+# RODAR O ARQUIVO: include [filename].run;
+
+# RESET
+reset;
+
+# LOAD MODEL
+model PO1L1E4.mod;
+
+# LOAD DATA
+model PO1L1E4.dat;
+
+# PROBLEM FORMULATION
+expand Max_time, Max_time_const, const0, const1, const2, const3, const4, const5;
+
+# CHOOSE SOLVER
+option solver "./cplex";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display start, Max_time;

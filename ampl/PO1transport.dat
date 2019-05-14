@@ -1,0 +1,31 @@
+data;
+
+param n := 6;
+param d := 2;
+param s := 3;
+
+param costs :=
+    1 80
+    2 215
+    3 100
+    4 108
+    5 102
+    6 68;
+
+param d_coef: 1 2 3 4 5 6 :=
+                1 1 0 1 0 1 0
+                2 0 1 0 1 0 1;
+
+param d_threshold := 
+    1 2300
+    2 1400;
+
+param s_coef: 1 2 3 4 5 6 :=
+                1 1 1 0 0 0 0
+                2 0 0 1 1 0 0
+                3 0 0 0 0 1 1;
+
+param s_threshold :=
+    1 1000
+    2 1500
+    3 1200;

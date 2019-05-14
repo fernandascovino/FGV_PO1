@@ -1,0 +1,24 @@
+# >>> ERRO PASTA MODEL:
+# RODAR NA LINHA DE COMANDO: option ampl_include models;
+# RODAR O ARQUIVO: include [filename].run;
+
+# RESET
+reset;
+
+# LOAD MODEL
+model PO1network.mod;
+
+# LOAD DATA
+model PO1network.dat;
+
+# PROBLEM FORMULATION
+expand Total_cost, Total_flow, Max_flow;
+
+# CONFIG MINOS (optional, if breaks)
+option solver "./minos";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display X, Total_cost;

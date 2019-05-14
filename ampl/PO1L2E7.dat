@@ -1,0 +1,21 @@
+data;
+
+set inputs := 0 1 2 3;
+set states := 1 2 3;
+
+param capacity :=
+    0 10000 # Yukon
+    1 4000
+    2 2000
+    3 3000;
+  
+param cost :=
+    0 60 # Yukon
+    1 70
+    2 50
+    3 30;
+
+param demand :=
+    1 3500 # A
+    2 3000 # B
+    3 4000; # C

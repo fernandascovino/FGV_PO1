@@ -1,0 +1,26 @@
+# >>> ERRO PASTA MODEL:
+# RODAR NA LINHA DE COMANDO: option ampl_include models;
+# RODAR O ARQUIVO: include [filename].run;
+
+# RESET
+reset;
+
+printf "\n=== Solução m_1 = 0.0093334 ===\n\n";
+
+# LOAD MODEL
+model PO1L1E2test.mod;
+
+# LOAD DATA
+model PO1L1E2.dat;
+
+# PROBLEM FORMULATION
+expand Total_profit, Total_milk_fat, Total_litres_produced;
+
+# CONFIG MINOS (optional, if breaks)
+option solver "./cplex";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display X, Total_profit;

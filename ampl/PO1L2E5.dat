@@ -1,0 +1,26 @@
+data;
+
+set packs := A B C D E;
+set info_packs := weights volumes values;
+
+set segments := Front Middle Back;
+set info_segments := volume capacity;
+
+param packs_properties: weights volumes values :=
+    A 500 25 50000
+    B 1500 15 60000
+    C 2100 13 90000
+    D 600 20 40000
+    E 400 16 30000;
+
+param seg_properties: Front Middle Back :=
+    volume 200 500 300
+    capacity 8000 20000 6000;
+
+param packs_transport :=
+    A 12
+    B 8
+    C 22
+    D 15
+    E 11;
+

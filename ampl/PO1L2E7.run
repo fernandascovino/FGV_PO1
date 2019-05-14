@@ -1,0 +1,25 @@
+# >>> ERRO PASTA MODEL:
+# RODAR NA LINHA DE COMANDO: option ampl_include models;
+# RODAR O ARQUIVO: include [filename].run;
+
+# RESET
+reset;
+
+# LOAD MODEL
+model PO1L2E7.mod;
+
+# LOAD DATA
+model PO1L2E7.dat;
+
+# PROBLEM FORMULATION
+expand Total_cost, Total_demands, Total_barels, Maximum_x, Minimum_x;
+
+# CHOOSE SOLVER
+option solver "./cplex";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+print('==> barels[0] = Yukon');
+display barels, x, Total_cost;

@@ -1,0 +1,29 @@
+# >>> ERRO PASTA MODEL:
+# RODAR NA LINHA DE COMANDO: option ampl_include models;
+# RODAR O ARQUIVO: include [filename].run;
+
+# RESET
+reset;
+
+### L1E2 (b) - LINEARIZAR PROBLEMA x1*x2: https://optimization.mccormick.northwestern.edu/index.php/McCormick_envelopes
+### Artigo McCormick (1985): https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir85-3206.pdf
+
+printf "\n=== McCormick envelopes ===\n\n";
+
+# LOAD MODEL
+model PO1L1E2b.mod;
+
+# LOAD DATA
+model PO1L1E2.dat;
+
+# PROBLEM FORMULATION
+expand Total_profit, Total_milk_fat, Total_fat_free, McCormick_envelope_upper1, McCormick_envelope_upper2, McCormick_envelope_lower;
+
+# CHOOSE SOLVER
+option solver "./cplex";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display X, m_1, w, Total_profit;

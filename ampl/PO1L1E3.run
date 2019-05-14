@@ -1,0 +1,51 @@
+# >>> ERRO PASTA MODEL:
+# RODAR NA LINHA DE COMANDO: option ampl_include models;
+# RODAR O ARQUIVO: include [filename].run;
+
+# Letra (c): A diferença da (a) para a (b) é somente o salário do Samir, que cresce em (b) já que não é limitado.
+
+printf "\n=== LETRA (a) ===\n\n";
+
+# RESET
+reset;
+
+# LOAD MODEL
+model PO1L1E3a.mod;
+
+# LOAD DATA
+model PO1L1E3.dat;
+
+# PROBLEM FORMULATION
+expand Total_salaries, const0, const1, const2, const3, const4, const5, const6, const7, const8, const9, const10;
+
+# CHOOSE SOLVER
+option solver "./minos";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display salary, Total_salaries;
+
+printf "\n=== LETRA (b) ===\n\n";
+
+# RESET
+reset;
+
+# LOAD MODEL
+model PO1L1E3b.mod;
+
+# LOAD DATA
+model PO1L1E3.dat;
+
+# PROBLEM FORMULATION
+expand Max_salary, Max_salary_const, const0, const1, const2, const3, const4, const5, const6, const7, const8, const9, const10;
+
+# CHOOSE SOLVER
+option solver "./minos";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display salary, Max_salary;

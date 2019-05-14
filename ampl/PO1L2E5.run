@@ -1,0 +1,24 @@
+# >>> ERRO PASTA MODEL:
+# RODAR NA LINHA DE COMANDO: option ampl_include models;
+# RODAR O ARQUIVO: include [filename].run;
+
+# RESET
+reset;
+
+# LOAD MODEL
+model PO1L2E5.mod;
+
+# LOAD DATA
+model PO1L2E5.dat;
+
+# PROBLEM FORMULATION
+expand Total_values, Plane_distribution1, Plane_distribution2, Maximum_packs, Total_seg_weight, Total_seg_volum;
+
+# CHOOSE SOLVER
+option solver "./cplex";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display segment_cargo, Total_values;

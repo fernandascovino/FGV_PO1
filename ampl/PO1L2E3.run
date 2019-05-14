@@ -1,0 +1,52 @@
+# >>> ERRO PASTA MODEL:
+# RODAR NA LINHA DE COMANDO: option ampl_include models;
+# RODAR O ARQUIVO: include [filename].run;
+
+# RESET
+reset;
+
+printf "\n==== LETRA (a) ====\n\n";
+
+# LOAD MODEL
+model PO1L2E3a.mod;
+
+# LOAD DATA
+model PO1L2E3.dat;
+
+# PROBLEM FORMULATION
+expand Total_value, Total_weight;
+
+# CHOOSE SOLVER
+option solver "./cplex";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display y, Total_value;
+
+printf "==== LETRA (b) ====\n\n"; 
+printf "Devemos adicionar y['D'] <= y['A'], mas não faz diferença pois D e A não são selecionados.\n\n";
+
+printf "==== LETRA (c) ====\n\n";
+
+# RESET
+reset;
+
+# LOAD MODEL
+model PO1L2E3c.mod;
+
+# LOAD DATA
+model PO1L2E3.dat;
+
+# PROBLEM FORMULATION
+expand Total_value, Exceded_weight;
+
+# CONFIG CPLEX (optional, if breaks)
+option solver "./cplex";
+
+# SOLVE
+solve;
+
+# SHOW RESULTS
+display y, Total_value;
