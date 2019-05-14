@@ -1,6 +1,6 @@
 ## AMPL
 
-Ao longo do  curso, utilizamos o software de otimização AMPL. A vantagem dess linguagem é que permite separamos completamente os dados (`.dat`) do modelo (`.mod`), sendo que a sintaxe deste último é muito semelhante à descrição matemática que utilizamos para modelar o problema. Alguns dos exercícios resolvidos em AMPL encontram-se nessa pasta.
+Ao longo do  curso, utilizamos o software de otimização AMPL. A vantagem dessa linguagem é que permite separarmos completamente os dados (`.dat`) do modelo (`.mod`). Além disso, a sintaxe é muito semelhante à descrição matemática que utilizamos para modelar o problema. Alguns dos exercícios resolvidos em AMPL encontram-se nessa pasta.
 
 ### Lista de exercícios
 
@@ -34,5 +34,5 @@ Para rodar um arquivo, basta executar o `.run` referente ao mesmo, da seguinte f
 $ cd PATH/TO/ampl_FOLDER;
 $ ./ampl;
 $ ampl: option ampl_include models;
-$ ampl: include [x].run;
+$ ampl: include [YOUR_FILENAME].run;
 ```
