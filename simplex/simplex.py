@@ -8,15 +8,15 @@ class LinearProgram():
         self.costs = np.nan
         self.independent_cost = 0
         self.result = np.nan
+        self.basis = np.nan
+        self.operator = max
 
-    def basis(self):
+    # Provar que o problema é factível! (E achar a base)
+    def find_basis(self):
 
-        print("\nCalculando uma base para o PL...")
-        self.base = np.where(self.costs == 0)[0]
-        
-        if len(self.base) == self.restrictions.shape[0]:
-            
-            print("Base achada! B = {}\n".format(self.base))
+        #print("\nCalculando uma base para o PL...")
+        #self.base = np.where(self.costs == 0)[0]
+        pass
 
 class Simplex:
 
@@ -39,8 +39,20 @@ class Simplex:
         self.c = PL.costs
         self.b = PL.result
         self.w = PL.independent_cost
-        self.B = PL.base
-        self.N = list(set(range(self.A.shape[0])) - set(self.B))
+        self.operator = PL.operator
+        if PL.basis != np.nan:
+            self.B = PL.basis
+            self.N = list(set(range(self.A.shape[0])) - set(self.B))
+
+    def find_basis(self):
+
+        # Criamos n novas variáveis
+        n = A.shape[0]
+        A_aux = np.identity(n)
+        c = np.ones(n)
+
+        # calculaamos com as novas variáveis referentes à base?
+        #self.calculate()
     
     def canonical_form(self):
 
@@ -61,23 +73,31 @@ class Simplex:
         
         # Encontrar tamanho do passo
         rows = self.b.shape[0]
-        #print(rows)
-
         t = 0
-        aux = 1
-        i = 0
-        while aux >= t or aux <= 0:
+
+        for i in range(rows):
             aux = self.b[i] / self.A[i, self.k]
-            i += 1
-        
-        self.t = aux
+            print(aux)
+
+            if self.operator = max:
+                if aux < t or aux > 0:
+                    t = aux
+                    self.r = i
+                
+            if self.operator = min:
+                if aux > t or aux > 0:
+                    t = aux
+                    self.r = i
+        #print(t)
 
         # Dar o passo escolhido
-        x_aux = b - t*A[:, k]
-        x = np.zeros(var_nao_basicas.shape[1], 1)
-        x[k, 1] = t
-        self.x = [x, x_aux]
-    
+        x_aux = self.b - t*self.A[:, self.k]
+
+        x = np.zeros((var_nao_basicas.shape[0], 1))
+        x[self.k, 0] = t
+        self.x = np.concatenate((x, x_aux))
+        #print(self.r)
+
     def calculate(self):
 
         print(">>> Iniciando Simplex!")
@@ -112,8 +132,9 @@ class Simplex:
 PL = LinearProgram()
 PL.restrictions = np.matrix([[1,1,1,0,0], [2,1,0,1,0], [-1,1,0,0,1]])
 PL.costs = np.array([2,3,0,0,0])
-PL.result = np.array([0,0,6,10,4]).reshape(5,1)
-PL.basis()
+PL.result = np.array([6,10,4]).reshape(3,1)
+PL.basis = np.array([2,3,4])
 
 x = Simplex(PL)
+#x.find_basis()
 x.calculate()

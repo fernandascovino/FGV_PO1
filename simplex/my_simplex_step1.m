@@ -32,7 +32,7 @@ function [x_1, t, k] = my_simplex_step1(A, b, c)
 endfunction
 
 A = [1 1 1 0 0; 2 1 0 1 0; -1 1 0 0 1]
-b = [0,0,6,10,4]'
+b = [6,10,4]'
 c = [2,3,0,0,0]
 [x_1, t, k] = my_simplex_step1(A, b, c)
 
