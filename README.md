@@ -6,7 +6,7 @@ Content developed and exercises solved for Operational Research discipline, from
 - Linear Programming
 - Integer Programming
 - Network Models
-- Simplex
+- [Simplex](/simplex)
 - Duality
 
 ### Books
