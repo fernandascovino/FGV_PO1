@@ -29,8 +29,6 @@ def find_basis(A, c, b):
     print('B: ', B)
 
     print('Solução inicial:')
-    #pinv = np.linalg.pinv(A_exp)
-    #x = np.dot(pinv, b)
     x = np.zeros(A_exp.shape[1])
     x[B] = np.dot(A_exp[:, B], b).reshape(B.shape[0])
     print(x)
@@ -123,7 +121,9 @@ class Simplex:
             print('w: \n', self.w)
             print(">> Problema canonizado! x: ", self.x)
             
-        else:
+        else:   
+            # self.x = np.zeros(self.A.shape[1])
+            # self.x[self.B] = np.dot(self.A[:, self.B], self.b).reshape(self.B.shape[0])
             print(">> Problema ja na forma canonica! x: ", self.x)
     
     def step(self):
@@ -135,7 +135,6 @@ class Simplex:
         rows = self.b.shape[0]
         
         t_set = np.array([self.b[i]/self.A[i, self.k] for i in range(rows)])
-        #t = t_set[t_set > 0] # t > 0
         t_set = t_set[t_set > 0] # t > 0
         print('t: {}'.format(t_set))
         
@@ -202,6 +201,7 @@ class Simplex:
             print(self.B)
             self.B = np.delete(self.B, self.r)
             print('Removendo o r-ésimo elemento (r = {}):'.format(self.r))
+            self.B = np.array(list(set(self.B.ravel())))
             print(self.B)
             
             self.N = list(set(range(self.A.shape[1])) - set(self.B))
