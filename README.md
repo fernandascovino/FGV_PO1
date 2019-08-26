@@ -18,8 +18,8 @@ Content developed and exercises solved for Operational Research discipline, from
 
 ```
   ├── LICENSE
-  ├── README.md                  <- The top-level README for developers using this project (also know as this file!)
+  ├── README.md                  <- The top-level README for developers using this project (this file!)
   ├── ampl                       <- AMPL exercises and instructions (download, how to run, in pt-br)
-  ├── simplex                    <- Simplex implementation
-  └── raw                        <- Implementation of Simplex algorithm in Python
+  ├── files                      <- Exercises and chapters covered along the course
+  └── simplex                    <- Implementation of Simplex algorithm in Python
 ```
